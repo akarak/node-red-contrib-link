@@ -55,7 +55,7 @@ module.exports = function(RED) {
   }
 
   LinkProxyNode.prototype.forwardMessage = function(topic, msg) {
-    console.log('sending', topic, msg);
+    //console.log('sending', topic, msg);
     this._inputNodes.forEach(function(node, i, inputNodes) {
       if (node.topic == topic) {
         node.send(msg);
@@ -99,7 +99,7 @@ module.exports = function(RED) {
       this.error(RED._("links-proxy.errors.missing-conf"));
     }
     this.on("input", function(msg) {
-      console.log('sending msg', msg);
+      //console.log('sending msg', msg);
       if (msg) {
         //sending message to listening nodes
         node.proxy.forwardMessage(node.topic, msg);

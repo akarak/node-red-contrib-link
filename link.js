@@ -31,22 +31,22 @@ module.exports = function(RED) {
     node.on("close", function() {
       // Workaround https://github.com/einaros/ws/pull/253
       // Remove listeners from RED.server
-      console.log('close proxy');
+      //console.log('close proxy');
     });
 
-    console.log('new proxy');
+    //console.log('new proxy');
 
   }
 
   RED.nodes.registerType("link-proxy", LinkProxyNode);
 
   LinkProxyNode.prototype.registerInputNode = function( /*Node*/ handler) {
-    console.log('register input');
+    //console.log('register input');
     this._inputNodes.push(handler);
   }
 
   LinkProxyNode.prototype.removeInputNode = function( /*Node*/ handler) {
-    console.log('remove input');
+    //console.log('remove input');
     this._inputNodes.forEach(function(node, i, inputNodes) {
       if (node === handler) {
         inputNodes.splice(i, 1);
@@ -71,7 +71,7 @@ module.exports = function(RED) {
     this.proxy = RED.nodes.getNode(n.proxy);
 
     this.topic = n.topic;
-    console.log('new link in', this.topic);
+    //console.log('new link in', this.topic);
 
     if (this.proxy) {
       this.proxy.registerInputNode(this);
